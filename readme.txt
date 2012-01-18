@@ -1,1 +1,1 @@
-This is the root of ResTest
+This is the root of ResTest.
