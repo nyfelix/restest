@@ -1,0 +1,245 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <header id="title">
+        <div class="title-main">ResTest</div>
+        <div class="title-slogan">An apporach to develop testdriven webservices</div>
+		<hr>
+    </header>
+    <div id="main" role="main">
+        <p>&nbsp;</p>
+        <div class="highlight"><div style="float: left;">ResTest</div><div class="indent">...is a suggestion to develop well documented and testproven REST services.</div></div>
+		<p class="highlight"><span class="indent">... wants to be straight forward</span></p>
+		<p class="highlight"><span class="indent">... is just a proposal looking for feedback</span></p>
+		<p>&nbsp;</p>
+                <p class="highlight">ResTest commeted code might look like this:</p>
+		<pre class="code">
+
+	/**
+	* This is a simple demo of the ResTest philosphy
+	* 
+	* @method sampleService This method implements the webservice sample
+	* @param {String} foo This is the foo parameter
+	* <span class="code-tag">@webservice </span><span class="code-values">{GET} /services/sample.php?foo={foo}</span> This is the request Pattern
+	* @return {String } A string containing with value 'bar'
+	* 
+	* <span class="code-tag">@testcase firstTestcase </span><span class="code-values">{
+	*     type : 'unittest',
+	*     name : 'Sample Test',
+	*     data : {
+	*         foo : 'bar'
+	*     },
+	*     test : {
+	*       type : 'assert',
+	*       datatype : 'String',
+	*       value : 'bar',
+	*     }
+	* }</span> Test if the service returns the expected result
+	*/
+		</pre>
+                <p>&nbsp;</p>
+                <p class="highlight">And it might result in something like this:</p>
+                <p>&nbsp;</p>
+		<hr>
+		<article>
+		<h2>The Aim of ResTest</h2>
+		<p>ResTest ains at a pragmatic approach to develop well specified, documented and tested webservices.
+		In particular it targtes theses aims:</p>
+		<ul>
+		 <li>Keep sepcification, implementation, documentation and testcases in one place and allways have them synchronized</li>
+		 <li>Keep things as simple as possible and use common standards whenever possible</li>
+		 <li>Have allwas running and testable services from the very beginning of a project</li>
+		 </ul>
+		</article>
+		<hr>
+		<article>
+		<h2>The Idea</h2>
+		<p class="cite">"Documentation includes specification, specification inclues testcases"</p>
+ 
+		<p>What we document is the implementation of a specification, therefore our 
+		documentation needs to meet the specification. If we can't meet the specs,
+		we need to change the specs. Or in other words, the specs are allways part
+		of the documentation. To prove the implementation works as specified, a proper
+		specification always needs appropriate testcases.</p>
+
+		<p class="cite">"These three things should allways be synchronized, so why even separate them?"</p>
+		
+		<p>For documentation we have beautiyful quasi standards realized in many 
+		different dialects (such as javadoc). Unfortunately I've never found 
+		such a thing for documentation of webservices or even testcases. So here's
+		a suggesten how we could do realize that.</p>
+		</article>
+                <hr>
+		<article>
+		<h2>The Missing Part</h2>
+
+		<p>It's not much I'm missing. Here it is:</p>
+
+		<h3>1.) There are two documentation tags I'm missing to describe test enabled webservices</h3>
+                <p><strong>@webservice</strong> {tpye} http://RequestPattern/ Description of the service and how to call it</p>
+                <p><strong>@testcase</strong> {definition} Description of the testcases</p>
+		<h3>2.) A neutral Testcase description</h3>
+		<p>Most of the ajax testcases I have met so far are simple assert cases. However, we need
+                to be open for more complex cases and also from my experiance it is very probable that you
+                you want to combine multiple requests to some kind of integration test. So, below is just a
+                simple example. A more detailed description also including custom code for complex testing
+                and integration tests of multibple axja calls is in work.
+                </article>
+                <hr>
+		<article>
+		<h2>Another Example</h2>
+		</article>
+		<pre class="code"><code>
+
+    /**
+    * This is an example module which explains how ResTest works
+    * together with yuidoc. But it could be any other documentation Library
+    *
+    * @module ResTest
+    */
+
+    /**
+    * This class handles our service requests
+    * @class SampleService
+    */
+
+    static class SampleService() {
+
+        /**
+        * This is a simple demo of the ResTest philosphy
+        * Here I use php, but it could be any language...
+        *
+        * @method sampleService This says 'foo and bar' if foo is different from bar
+        * @param {String} foo This is the foo parameter
+        * @param {String} bar This is the bar parameter
+        * @webservice {POST} /services/sample.php { foo:{foo}, bar={bar} }
+        *  This is the request Pattern for a POST webservice
+        * @return {String} A string containing foo and bar
+        *
+        * @testcase firstTestcase {
+        *	type : 'unittest',
+        *	name : 'SampleTest',
+        *       data : {
+        *           foo: 'foo',
+        *           bar: 'bar'
+        *       },
+        *	test : {
+        *           type : 'assert',
+        *           value : 'bar'
+        *	}
+        * } Test if the service returns the expected result
+        *
+        * @testcase secondTestcase {
+        *	type : 'unittest',
+        *	name : 'SampleTestTwo',
+        *       data : {
+        *           foo: 'foo',
+        *           bar: 'bar'
+        *       },
+        *	test : {
+        *           type : 'assert',
+        *           value : 'ERROR'
+        *	}
+        * } Test if the service returns an error if foo equals bar
+        */
+
+        public static function handleService($foo, $bar) {
+                $result = $foo.' and '.$bar;
+                if ($foo == $bar) {
+                    $result = 'ERROR'
+                }
+                return $result;
+        }
+
+    }
+
+    /**
+    * Call the service handler on request
+    */
+    SampleService::handleService($_GET['foo'], $_GET['bar']);
+
+		</code></pre>
+                
+                <hr>
+		<article>
+		<h2>Plans on Implementation</h2>
+
+		<p>Since my company uses yuidoc for documentation (the new node bases version), I plan to write a plugin
+		to YUI doc which parses the aditional two documentation tags and allows us to run tests on build-time and
+                also during production.</p>
+                <p>To run tests during 
+		</article>
+    </div>
+    <footer>
+        Designed by @nyfelix
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Change UA-XXXXX-X to be your site's ID -->
+  <script>
+    window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
+    Modernizr.load({
+      load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+    });
+  </script>
+
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
