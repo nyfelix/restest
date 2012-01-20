@@ -255,6 +255,10 @@ header {
     margin-right: auto;
 }
 
+footer {
+    margin : 10px;
+}
+
 li {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -272,6 +276,32 @@ article {
 
 .title-slogan {
     font-size: 25pt;
+}
+
+.preview {
+    border: 1px solid #cccccc;
+    text-align: center;
+}
+
+#feedback {
+    position: fixed;
+    top : 0px;
+    left : 0px;
+    margin: 10px;
+}
+
+
+#feedback {
+    position: fixed;
+    top : 0px;
+    left : 0px;
+    margin: 10px;
+}
+
+@media screen and (max-width: 1150px) {
+    #feedback {
+        position: relative;
+    }
 }
 
 #main {

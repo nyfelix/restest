@@ -39,175 +39,130 @@
   <div id="container">
     <header id="title">
         <div class="title-main">ResTest</div>
-        <div class="title-slogan">An apporach to develop testdriven webservices</div>
-		<hr>
-    </header>
+        <div class="title-slogan">An approach to develop test-driven web services</div>
+        <hr>
+        <div id="feedback">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="nyfelix" data-size="large" data-hashtags="restest">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+    </header>      
     <div id="main" role="main">
         <p>&nbsp;</p>
-        <div class="highlight"><div style="float: left;">ResTest</div><div class="indent">...is a suggestion to develop well documented and testproven REST services.</div></div>
+        <div class="highlight"><div style="float: left;">ResTest</div><div class="indent">...is a suggestion to develop well documented and test proven REST services.</div></div>
 		<p class="highlight"><span class="indent">... wants to be straight forward</span></p>
 		<p class="highlight"><span class="indent">... is just a proposal looking for feedback</span></p>
 		<p>&nbsp;</p>
-                <p class="highlight">ResTest commeted code might look like this:</p>
+                <p class="highlight">ResTest commented code might look like this:</p>
 		<pre class="code">
 
 	/**
-	* This is a simple demo of the ResTest philosphy
+	* This is a simple demo of the ResTest philosophy
 	* 
 	* @method sampleService This method implements the webservice sample
 	* @param {String} foo This is the foo parameter
-	* <span class="code-tag">@webservice </span><span class="code-values">{GET} /services/sample.php?foo={foo}</span> This is the request Pattern
-	* @return {String } A string containing with value 'bar'
+	* @param {String} bar This is the bar parameter
+	* <span class="code-tag">@webservice </span><span class="code-values">{GET} /services/sample.php?foo={foo}&bar={bar}</span> This is the request Pattern
+	* @return {String } A string containing with value 'foo and bar'
 	* 
-	* <span class="code-tag">@testcase firstTestcase </span><span class="code-values">{
-	*     type : 'unittest',
-	*     name : 'Sample Test',
-	*     data : {
-	*         foo : 'bar'
+	* <span class="code-tag">@testcase SampleTestcase </span><span class="code-values">{
+        *     arrange : {
+        *       // Do anything to arrange the test
 	*     },
-	*     test : {
-	*       type : 'assert',
+	*     act : {
+        *       // Do the webservice request
+        *       request : {
+        *         foo : 'foo',
+        *         bar : 'bar'
+        *       }
+        *     },
+	*     assert : {
+        *       // Assert the result is as expected
 	*       datatype : 'String',
-	*       value : 'bar',
+	*       value : 'foo and bar',
 	*     }
 	* }</span> Test if the service returns the expected result
 	*/
 		</pre>
                 <p>&nbsp;</p>
                 <p class="highlight">And it might result in something like this:</p>
-                <p>&nbsp;</p>
+                <div class="preview"><img src="img/example.png"></div>
 		<hr>
 		<article>
 		<h2>The Aim of ResTest</h2>
-		<p>ResTest ains at a pragmatic approach to develop well specified, documented and tested webservices.
-		In particular it targtes theses aims:</p>
+		<p>ResTest aims at a pragmatic approach to develop well specified, documented and tested web services. In particular it targets theses aims:</p>
 		<ul>
-		 <li>Keep sepcification, implementation, documentation and testcases in one place and allways have them synchronized</li>
+		 <li>Keep specification, implementation, documentation and test cases in one place and always have them synchronized</li>
 		 <li>Keep things as simple as possible and use common standards whenever possible</li>
-		 <li>Have allwas running and testable services from the very beginning of a project</li>
+		 <li>Keep things as simple as possible and use common standards whenever possible
+                 </li>
 		 </ul>
 		</article>
 		<hr>
 		<article>
 		<h2>The Idea</h2>
-		<p class="cite">"Documentation includes specification, specification inclues testcases"</p>
+		<p class="cite">"Documentation includes specification, specification includes test cases"</p>
  
-		<p>What we document is the implementation of a specification, therefore our 
-		documentation needs to meet the specification. If we can't meet the specs,
-		we need to change the specs. Or in other words, the specs are allways part
-		of the documentation. To prove the implementation works as specified, a proper
-		specification always needs appropriate testcases.</p>
+		<p>What we document is the implementation of a specification. Therefore, our documentation
+                    needs to meet the specification. If we can't meet the specs, we need to change the specs.
+                    Or in other words, the specs are always part of the documentation. To prove the
+                    implementation works as specified, a proper specification always needs appropriate test cases.</p>
 
-		<p class="cite">"These three things should allways be synchronized, so why even separate them?"</p>
+		<p class="cite">"These three things should always be synchronized, so why even separate them?"</p>
 		
-		<p>For documentation we have beautiyful quasi standards realized in many 
-		different dialects (such as javadoc). Unfortunately I've never found 
-		such a thing for documentation of webservices or even testcases. So here's
-		a suggesten how we could do realize that.</p>
+		<p>For documentation we have beautiful quasi standards realized in many different dialects
+                    (such as javadoc). Also there are concepts around for neutral readable test case descriptions
+                    such as <a href="https://github.com/cucumber/cucumber/wiki/Gherkin">Gherkin</a>. So for me it
+                    would be an extreme benefit to keep all these things together
+                    and have them always published with the latest release.</p>
+                <p>As I understand, these thoughts are part of agile development.</p>
 		</article>
                 <hr>
 		<article>
 		<h2>The Missing Part</h2>
 
-		<p>It's not much I'm missing. Here it is:</p>
+		<p>It's not much I'm missing to realize this idea. Here it is:</p>
 
-		<h3>1.) There are two documentation tags I'm missing to describe test enabled webservices</h3>
-                <p><strong>@webservice</strong> {tpye} http://RequestPattern/ Description of the service and how to call it</p>
-                <p><strong>@testcase</strong> {definition} Description of the testcases</p>
-		<h3>2.) A neutral Testcase description</h3>
-		<p>Most of the ajax testcases I have met so far are simple assert cases. However, we need
-                to be open for more complex cases and also from my experiance it is very probable that you
-                you want to combine multiple requests to some kind of integration test. So, below is just a
-                simple example. A more detailed description also including custom code for complex testing
-                and integration tests of multibple axja calls is in work.
+		<h3>1.) A description of the service and how to call it</h3>
+                <p><strong>@webservice</strong> name {type} http://request.org/pattern/{parameter}?optional={optional}</p>
+                There is an established formalized way to describe REST services with {placeholder} description.
+		<h3>2.) A formalized test case description</h3>
+                <p><strong>@testcase</strong> name {formalized test case} Description of the test cases</p>
+                <p>A potential way of test case formalization could be the above sketched JSON format or maybe Gerkin.
+                    It will be a challenge to face the trade-off between readability and formalization.</p>
+                <p>Most of the ajax test cases I have met so far are <a href="http://c2.com/cgi/wiki?ArrangeActAssert">arrange - act - assert</a>
+                pattern cases. However, we might want to be open for more complex situations. Also, from my experience it is very probable that we
+                want to combine multiple requests to some kind of integration test (e.g. it could be part of the arrange part to run another
+                web service to prepare or collect data).</p>
                 </article>
                 <hr>
 		<article>
 		<h2>Another Example</h2>
 		</article>
+                <a href="doc-example/index.html">See the yuidoc output of this example</a>
 		<pre class="code"><code>
-
     /**
-    * This is an example module which explains how ResTest works
-    * together with yuidoc. But it could be any other documentation Library
-    *
-    * @module ResTest
+    * A POST Example with JSON Content will be here
     */
-
-    /**
-    * This class handles our service requests
-    * @class SampleService
-    */
-
-    static class SampleService() {
-
-        /**
-        * This is a simple demo of the ResTest philosphy
-        * Here I use php, but it could be any language...
-        *
-        * @method sampleService This says 'foo and bar' if foo is different from bar
-        * @param {String} foo This is the foo parameter
-        * @param {String} bar This is the bar parameter
-        * @webservice {POST} /services/sample.php { foo:{foo}, bar={bar} }
-        *  This is the request Pattern for a POST webservice
-        * @return {String} A string containing foo and bar
-        *
-        * @testcase firstTestcase {
-        *	type : 'unittest',
-        *	name : 'SampleTest',
-        *       data : {
-        *           foo: 'foo',
-        *           bar: 'bar'
-        *       },
-        *	test : {
-        *           type : 'assert',
-        *           value : 'bar'
-        *	}
-        * } Test if the service returns the expected result
-        *
-        * @testcase secondTestcase {
-        *	type : 'unittest',
-        *	name : 'SampleTestTwo',
-        *       data : {
-        *           foo: 'foo',
-        *           bar: 'bar'
-        *       },
-        *	test : {
-        *           type : 'assert',
-        *           value : 'ERROR'
-        *	}
-        * } Test if the service returns an error if foo equals bar
-        */
-
-        public static function handleService($foo, $bar) {
-                $result = $foo.' and '.$bar;
-                if ($foo == $bar) {
-                    $result = 'ERROR'
-                }
-                return $result;
-        }
-
-    }
-
-    /**
-    * Call the service handler on request
-    */
-    SampleService::handleService($_GET['foo'], $_GET['bar']);
-
 		</code></pre>
                 
                 <hr>
 		<article>
 		<h2>Plans on Implementation</h2>
-
-		<p>Since my company uses yuidoc for documentation (the new node bases version), I plan to write a plugin
-		to YUI doc which parses the aditional two documentation tags and allows us to run tests on build-time and
-                also during production.</p>
-                <p>To run tests during 
+                <p>The above principles and concepts might be generic, but have to be implemented or plugged into the
+                    real world which means we need to tell our favorite doc generator to understand these tags and we
+                    need to tell it how to deal with test case, depending on the description language we choose. These
+                    will always be implementations on your development environment. However, it would be great for
+                    developers if we could agree on some general principles.</p>
+		<p>Since my company uses yuidoc for documentation (the new node bases version), I will to write a
+                    plugin to YUIdoc and a which parses the additional two documentation tags and a JavaScript based
+                    test runner, which allows us to run tests on build-time and during production.</p>
+                <p>To run tests during development, the js test runner can be embedded to the current project. In
+                    addition it would be helpful to have the test runner on the web, so you can drop some JSON and
+                    get the test results.</p>
 		</article>
     </div>
     <footer>
-        Designed by @nyfelix
+        Crafted by @nyfelix
     </footer>
   </div> <!--! end of #container -->
 
