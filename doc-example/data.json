@@ -1,0 +1,113 @@
+{
+    "project": {
+        "name": "RESTest Example",
+        "description": "Doc Spec and Test in one file",
+        "version": "2.0",
+        "url": "http://"
+    },
+    "files": {
+        "build\\Specs.php": {
+            "name": "build\\Specs.php",
+            "modules": {
+                "RESTest": 1
+            },
+            "classes": {
+                "SampleClass": 1
+            },
+            "fors": {
+                "RequestHandler": 1
+            },
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "RESTest": {
+            "name": "RESTest",
+            "submodules": {},
+            "classes": {
+                "SampleClass": 1,
+                "RequestHandler": 1
+            },
+            "fors": {
+                "RequestHandler": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "build\\Specs.php",
+            "line": 3,
+            "description": "This is an example module which explains how RESTest works \ntogether with yuidoc. But it could be any other documentation Library"
+        }
+    },
+    "classes": {
+        "SampleClass": {
+            "name": "SampleClass",
+            "shortname": "SampleClass",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RESTest",
+            "namespace": "",
+            "file": "build\\Specs.php",
+            "line": 10,
+            "description": "This class handles our service requests"
+        },
+        "RequestHandler": {
+            "name": "RequestHandler",
+            "shortname": "RequestHandler",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RESTest",
+            "namespace": ""
+        }
+    },
+    "classitems": [
+        {
+            "file": "build\\Specs.php",
+            "line": 16,
+            "description": "This method implements a GET web service sample according to\nthe specification below. You can also see if it reutrns valid\nresults.",
+            "itemtype": "method",
+            "name": "sampleService",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "This is the foo parameter",
+                    "type": "String"
+                },
+                {
+                    "name": "bar",
+                    "description": "This is the bar parameter",
+                    "type": "String"
+                }
+            ],
+            "webservice": {
+                "pattern": " /services/sample.php?foo={foo}&bar={bar}",
+                "type": "{GET}"
+            },
+            "return": {
+                "description": "A string containing foo and bar",
+                "type": "String"
+            },
+            "testcase": {
+                "name": "firstTestcase",
+                "description": "{\n    arrange : {\n      // Do anything to arrange the test\n    },\n    act : {\n      // Do the webservice request\n      request : {\n        foo : 'bar'\n      }\n    },\n    assert :  Test if the service returns the expected result",
+                "definition": "\n      // Assert the result is as expected\n      datatype : 'String',\n      value : 'bar',\n    }\n"
+            },
+            "class": "SampleClass",
+            "module": "RESTest"
+        },
+        {
+            "file": "build\\Specs.php",
+            "line": 52,
+            "description": "Call the service handler on request",
+            "itemtype": "method",
+            "name": "handleService",
+            "class": "RequestHandler",
+            "module": "RESTest"
+        }
+    ]
+}
