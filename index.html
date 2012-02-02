@@ -41,14 +41,18 @@
         <div class="title-main">ResTest</div>
         <div class="title-slogan">An approach to develop test-driven web services</div>
         <hr>
-        <div id="feedback">
-        <a href="https://twitter.com/share" class="twitter-share-button" data-via="nyfelix" data-size="large" data-hashtags="restest">Tweet</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        </div>
+        <ul id="feedback">
+            <li><span class="highlight">Feedback </span></li>
+            <li><a href="https://github.com/nyfelix/restest/issues/1"><img src="img/github.jpg" alt="GitHub Issue 1"></a> </li>
+            <li id="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-via="nyfelix" data-size="large" data-hashtags="restest">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </li>            
+        </ul>
     </header>      
     <div id="main" role="main">
         <p>&nbsp;</p>
-        <div class="highlight"><div style="float: left;">ResTest</div><div class="indent">...is a suggestion to develop well documented and test proven REST services.</div></div>
+                <div class="highlight"><div style="float: left;">ResTest</div><div class="indent">
+                ... is a suggestion to develop well documented and test proven REST services.</div></div>
 		<p class="highlight"><span class="indent">... wants to be straight forward</span></p>
 		<p class="highlight"><span class="indent">... is just a proposal looking for feedback</span></p>
 		<p>&nbsp;</p>
@@ -150,16 +154,15 @@
 		<article>
 		<h2>Plans on Implementation</h2>
                 <p>The above principles and concepts might be generic, but have to be implemented or plugged into the
-                    real world which means we need to tell our favorite doc generator to understand these tags and we
-                    need to tell it how to deal with test case, depending on the description language we choose. These
-                    will always be implementations on your development environment. However, it would be great for
-                    developers if we could agree on some general principles.</p>
-		<p>Since my company uses yuidoc for documentation (the new node bases version), I will to write a
-                    plugin to YUIdoc and a which parses the additional two documentation tags and a JavaScript based
-                    test runner, which allows us to run tests on build-time and during production.</p>
-                <p>To run tests during development, the js test runner can be embedded to the current project. In
-                    addition it would be helpful to have the test runner on the web, so you can drop some JSON and
-                    get the test results.</p>
+                    real world. This means we need to tell our favorite doc generator to understand these tags and we
+                    need to tell it how to deal with the test case. These things will always be implementations on your
+                    development environment. However, it would be great for developers if we could agree on some general
+                    principles, such as described above.</p>
+		<p>Since my company uses yuidoc for documentation (the new node.js based version), I will write a
+                    plugin to YUIdoc which renders the additional two documentation tags. Also I will write a JavaScript
+                    test runner, which allows us to run tests on build-time and during production (in my case tests will be
+                    executed with Y.Test).</p>
+                <p>Here will be a link to the test-runner</p>
 		</article>
     </div>
     <footer>

@@ -284,23 +284,39 @@ article {
 }
 
 #feedback {
-    position: fixed;
-    top : 0px;
-    left : 0px;
+    border: 2px dotted dodgerBlue;
+    left: 0;
     margin: 10px;
+    padding: 10px;
+    position: fixed;
+    text-align: left;
+    top: 0;
+    list-style: none
 }
 
+#feedback li {
+    margin: 0;
+}
 
-#feedback {
-    position: fixed;
-    top : 0px;
-    left : 0px;
-    margin: 10px;
+#feedback .highlight {
+    font-size: 12pt;
+    font-weight: bold;
+    line-height: 30pt;
 }
 
 @media screen and (max-width: 1150px) {
     #feedback {
+        position: relative;        
+    }
+
+    #feedback li {
+        display: inline;
+        vertical-align : text-bottom;
+    }
+
+    #twitter {
         position: relative;
+        top: 8px;
     }
 }
 
